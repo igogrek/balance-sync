@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+service balance {
+	rpc GetBalance (BalanceRequest) returns (BalanceResponse);
+	rpc UpdateBalance (BalanceUpdate) returns (BalanceUpdateResponse);
+	rpc UpdateBalanceSubscribe (SubscribeRequest) returns (stream BalanceUpdateResponse);
+}
+
+
+message BalanceRequest {
+	string email = 1;
+}
+
+message BalanceResponse {
+	int32 balance = 1;
+}
+
+
+message BalanceUpdate {
+	string email = 1;
+	int32 balance = 2;
+	string updatedBy = 3;
+}
+
+message BalanceUpdateResponse {
+	string message = 1;
+	BalanceUpdate update = 2;
+}
+
+
+message SubscribeRequest {
+	string subscriberId = 1;
+}
+
