@@ -21,13 +21,12 @@ func main() {
 
 	// Get balance
 	resp, err := client.GetBalance(context.Background(), &balance.BalanceRequest{
-		Email: "blac@com",
+		Did: "did:sov:2wJPyULfLLnYTEFYzByfUR",
 	})
 	if err != nil {
 		log.Printf("failed to get balance: %s", err)
 	} else {
-		log.Println(resp.Balance)
-		log.Printf("Current user balance: %v", resp.Balance)
+		log.Printf("Current user balance (%v): %v", len(resp.ActionIds), resp.ActionIds)
 	}
 
 	// Subscribe for updates
@@ -55,7 +54,7 @@ func main() {
 
 			log.Printf("Message from stream: %v", in.Message)
 			if in.Update != nil {
-				log.Printf("Got update from %s :(%v, %v)", in.Update.UpdatedBy, in.Update.Email, in.Update.Balance)
+				log.Printf("Got update from %s :(%v, %v)", in.Update.UpdatedBy, in.Update.Did, in.Update.ActionIds)
 			}
 
 		}
@@ -63,8 +62,8 @@ func main() {
 
 	// Send update
 	_, err = client.UpdateBalance(context.Background(), &balance.BalanceUpdate{
-		Balance:   1,
-		Email:     "blac@com",
+		ActionIds: []string{"get-flyer-1", "get-flyer-77", "share-facebook-3"},
+		Did:       "did:sov:2wJPyULfLLnYTEFYzByfUR",
 		UpdatedBy: newId.String(),
 	})
 	if err != nil {

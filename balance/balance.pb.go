@@ -3,12 +3,13 @@
 
 package balance
 
+import proto "github.com/golang/protobuf/proto"
+import fmt "fmt"
+import math "math"
+
 import (
-	context "context"
-	fmt "fmt"
-	proto "github.com/golang/protobuf/proto"
+	context "golang.org/x/net/context"
 	grpc "google.golang.org/grpc"
-	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -20,10 +21,10 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type BalanceRequest struct {
-	Email                string   `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	Did                  string   `protobuf:"bytes,1,opt,name=did,proto3" json:"did,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -33,17 +34,16 @@ func (m *BalanceRequest) Reset()         { *m = BalanceRequest{} }
 func (m *BalanceRequest) String() string { return proto.CompactTextString(m) }
 func (*BalanceRequest) ProtoMessage()    {}
 func (*BalanceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ee25a00b628521b1, []int{0}
+	return fileDescriptor_balance_4bef028716b21542, []int{0}
 }
-
 func (m *BalanceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BalanceRequest.Unmarshal(m, b)
 }
 func (m *BalanceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_BalanceRequest.Marshal(b, m, deterministic)
 }
-func (m *BalanceRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_BalanceRequest.Merge(m, src)
+func (dst *BalanceRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BalanceRequest.Merge(dst, src)
 }
 func (m *BalanceRequest) XXX_Size() int {
 	return xxx_messageInfo_BalanceRequest.Size(m)
@@ -54,15 +54,15 @@ func (m *BalanceRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_BalanceRequest proto.InternalMessageInfo
 
-func (m *BalanceRequest) GetEmail() string {
+func (m *BalanceRequest) GetDid() string {
 	if m != nil {
-		return m.Email
+		return m.Did
 	}
 	return ""
 }
 
 type BalanceResponse struct {
-	Balance              int32    `protobuf:"varint,1,opt,name=balance,proto3" json:"balance,omitempty"`
+	ActionIds            []string `protobuf:"bytes,1,rep,name=actionIds,proto3" json:"actionIds,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -72,17 +72,16 @@ func (m *BalanceResponse) Reset()         { *m = BalanceResponse{} }
 func (m *BalanceResponse) String() string { return proto.CompactTextString(m) }
 func (*BalanceResponse) ProtoMessage()    {}
 func (*BalanceResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ee25a00b628521b1, []int{1}
+	return fileDescriptor_balance_4bef028716b21542, []int{1}
 }
-
 func (m *BalanceResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BalanceResponse.Unmarshal(m, b)
 }
 func (m *BalanceResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_BalanceResponse.Marshal(b, m, deterministic)
 }
-func (m *BalanceResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_BalanceResponse.Merge(m, src)
+func (dst *BalanceResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BalanceResponse.Merge(dst, src)
 }
 func (m *BalanceResponse) XXX_Size() int {
 	return xxx_messageInfo_BalanceResponse.Size(m)
@@ -93,16 +92,16 @@ func (m *BalanceResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_BalanceResponse proto.InternalMessageInfo
 
-func (m *BalanceResponse) GetBalance() int32 {
+func (m *BalanceResponse) GetActionIds() []string {
 	if m != nil {
-		return m.Balance
+		return m.ActionIds
 	}
-	return 0
+	return nil
 }
 
 type BalanceUpdate struct {
-	Email                string   `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	Balance              int32    `protobuf:"varint,2,opt,name=balance,proto3" json:"balance,omitempty"`
+	Did                  string   `protobuf:"bytes,1,opt,name=did,proto3" json:"did,omitempty"`
+	ActionIds            []string `protobuf:"bytes,2,rep,name=actionIds,proto3" json:"actionIds,omitempty" bson:"actionIds,omitempty"`
 	UpdatedBy            string   `protobuf:"bytes,3,opt,name=updatedBy,proto3" json:"updatedBy,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -113,17 +112,16 @@ func (m *BalanceUpdate) Reset()         { *m = BalanceUpdate{} }
 func (m *BalanceUpdate) String() string { return proto.CompactTextString(m) }
 func (*BalanceUpdate) ProtoMessage()    {}
 func (*BalanceUpdate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ee25a00b628521b1, []int{2}
+	return fileDescriptor_balance_4bef028716b21542, []int{2}
 }
-
 func (m *BalanceUpdate) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BalanceUpdate.Unmarshal(m, b)
 }
 func (m *BalanceUpdate) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_BalanceUpdate.Marshal(b, m, deterministic)
 }
-func (m *BalanceUpdate) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_BalanceUpdate.Merge(m, src)
+func (dst *BalanceUpdate) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BalanceUpdate.Merge(dst, src)
 }
 func (m *BalanceUpdate) XXX_Size() int {
 	return xxx_messageInfo_BalanceUpdate.Size(m)
@@ -134,18 +132,18 @@ func (m *BalanceUpdate) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_BalanceUpdate proto.InternalMessageInfo
 
-func (m *BalanceUpdate) GetEmail() string {
+func (m *BalanceUpdate) GetDid() string {
 	if m != nil {
-		return m.Email
+		return m.Did
 	}
 	return ""
 }
 
-func (m *BalanceUpdate) GetBalance() int32 {
+func (m *BalanceUpdate) GetActionIds() []string {
 	if m != nil {
-		return m.Balance
+		return m.ActionIds
 	}
-	return 0
+	return nil
 }
 
 func (m *BalanceUpdate) GetUpdatedBy() string {
@@ -167,17 +165,16 @@ func (m *BalanceUpdateResponse) Reset()         { *m = BalanceUpdateResponse{} }
 func (m *BalanceUpdateResponse) String() string { return proto.CompactTextString(m) }
 func (*BalanceUpdateResponse) ProtoMessage()    {}
 func (*BalanceUpdateResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ee25a00b628521b1, []int{3}
+	return fileDescriptor_balance_4bef028716b21542, []int{3}
 }
-
 func (m *BalanceUpdateResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BalanceUpdateResponse.Unmarshal(m, b)
 }
 func (m *BalanceUpdateResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_BalanceUpdateResponse.Marshal(b, m, deterministic)
 }
-func (m *BalanceUpdateResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_BalanceUpdateResponse.Merge(m, src)
+func (dst *BalanceUpdateResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BalanceUpdateResponse.Merge(dst, src)
 }
 func (m *BalanceUpdateResponse) XXX_Size() int {
 	return xxx_messageInfo_BalanceUpdateResponse.Size(m)
@@ -213,17 +210,16 @@ func (m *SubscribeRequest) Reset()         { *m = SubscribeRequest{} }
 func (m *SubscribeRequest) String() string { return proto.CompactTextString(m) }
 func (*SubscribeRequest) ProtoMessage()    {}
 func (*SubscribeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ee25a00b628521b1, []int{4}
+	return fileDescriptor_balance_4bef028716b21542, []int{4}
 }
-
 func (m *SubscribeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SubscribeRequest.Unmarshal(m, b)
 }
 func (m *SubscribeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SubscribeRequest.Marshal(b, m, deterministic)
 }
-func (m *SubscribeRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SubscribeRequest.Merge(m, src)
+func (dst *SubscribeRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SubscribeRequest.Merge(dst, src)
 }
 func (m *SubscribeRequest) XXX_Size() int {
 	return xxx_messageInfo_SubscribeRequest.Size(m)
@@ -247,29 +243,6 @@ func init() {
 	proto.RegisterType((*BalanceUpdate)(nil), "BalanceUpdate")
 	proto.RegisterType((*BalanceUpdateResponse)(nil), "BalanceUpdateResponse")
 	proto.RegisterType((*SubscribeRequest)(nil), "SubscribeRequest")
-}
-
-func init() { proto.RegisterFile("balance.proto", fileDescriptor_ee25a00b628521b1) }
-
-var fileDescriptor_ee25a00b628521b1 = []byte{
-	// 257 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x4d, 0x4a, 0xcc, 0x49,
-	0xcc, 0x4b, 0x4e, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x57, 0x52, 0xe3, 0xe2, 0x73, 0x82, 0x08,
-	0x04, 0xa5, 0x16, 0x96, 0xa6, 0x16, 0x97, 0x08, 0x89, 0x70, 0xb1, 0xa6, 0xe6, 0x26, 0x66, 0xe6,
-	0x48, 0x30, 0x2a, 0x30, 0x6a, 0x70, 0x06, 0x41, 0x38, 0x4a, 0xda, 0x5c, 0xfc, 0x70, 0x75, 0xc5,
-	0x05, 0xf9, 0x79, 0xc5, 0xa9, 0x42, 0x12, 0x5c, 0xec, 0x50, 0xb3, 0xc0, 0x4a, 0x59, 0x83, 0x60,
-	0x5c, 0xa5, 0x58, 0x2e, 0x5e, 0xa8, 0xe2, 0xd0, 0x82, 0x94, 0xc4, 0x92, 0x54, 0xec, 0x66, 0x22,
-	0x1b, 0xc0, 0x84, 0x62, 0x80, 0x90, 0x0c, 0x17, 0x67, 0x29, 0x58, 0x67, 0x8a, 0x53, 0xa5, 0x04,
-	0x33, 0x58, 0x0f, 0x42, 0x40, 0x29, 0x92, 0x4b, 0x14, 0xc5, 0x78, 0x64, 0x17, 0xe5, 0xa6, 0x16,
-	0x17, 0x27, 0xa6, 0xa7, 0x42, 0x2d, 0x82, 0x71, 0x85, 0xd4, 0xb8, 0xd8, 0x20, 0xfa, 0xc1, 0x36,
-	0x71, 0x1b, 0xf1, 0xe9, 0xa1, 0x9a, 0x00, 0x95, 0x55, 0x32, 0xe3, 0x12, 0x08, 0x2e, 0x4d, 0x2a,
-	0x4e, 0x2e, 0xca, 0x4c, 0x82, 0x07, 0x88, 0x12, 0x17, 0x4f, 0x31, 0x4c, 0xac, 0xc8, 0x33, 0x05,
-	0x6a, 0x34, 0x8a, 0x98, 0xd1, 0x2e, 0x46, 0xb8, 0x5f, 0x84, 0xf4, 0xb9, 0xb8, 0xdc, 0x53, 0x4b,
-	0xa0, 0xe6, 0x0b, 0xf1, 0xeb, 0xa1, 0x86, 0xaf, 0x94, 0x80, 0x1e, 0x7a, 0x40, 0x9a, 0x73, 0xf1,
-	0x42, 0x9c, 0x01, 0xd3, 0x83, 0xe6, 0x3a, 0x29, 0x31, 0x3d, 0xec, 0xfe, 0x75, 0xe5, 0x12, 0x43,
-	0xd1, 0x08, 0x77, 0xba, 0x90, 0xa0, 0x1e, 0xba, 0x37, 0x70, 0x19, 0x62, 0xc0, 0x98, 0xc4, 0x06,
-	0x4e, 0x0a, 0xc6, 0x80, 0x00, 0x00, 0x00, 0xff, 0xff, 0x94, 0xb5, 0x9d, 0x9a, 0x1b, 0x02, 0x00,
-	0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -436,4 +409,27 @@ var _Balance_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Metadata: "balance.proto",
+}
+
+func init() { proto.RegisterFile("balance.proto", fileDescriptor_balance_4bef028716b21542) }
+
+var fileDescriptor_balance_4bef028716b21542 = []byte{
+	// 268 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x92, 0xc1, 0x4b, 0xc3, 0x30,
+	0x14, 0xc6, 0xc9, 0x0a, 0x1b, 0x7d, 0xda, 0xad, 0x06, 0x1c, 0x61, 0x78, 0x28, 0x39, 0x48, 0x4f,
+	0x99, 0x4c, 0xd0, 0xfb, 0x40, 0x64, 0xd7, 0x8a, 0x07, 0x0f, 0x1e, 0xd2, 0x26, 0x48, 0x41, 0xdb,
+	0xda, 0x97, 0x1e, 0xfc, 0xd7, 0xfc, 0xeb, 0x64, 0x6d, 0xda, 0x91, 0xa8, 0xb7, 0xf6, 0x7b, 0xf9,
+	0x7e, 0xf9, 0xde, 0x47, 0x20, 0xca, 0xe5, 0xbb, 0xac, 0x0a, 0x2d, 0x9a, 0xb6, 0x36, 0x35, 0xe7,
+	0xb0, 0xdc, 0x0f, 0x42, 0xa6, 0x3f, 0x3b, 0x8d, 0x86, 0xc6, 0x10, 0xa8, 0x52, 0x31, 0x92, 0x90,
+	0x34, 0xcc, 0x8e, 0x9f, 0x7c, 0x0b, 0xab, 0xe9, 0x0c, 0x36, 0x75, 0x85, 0x9a, 0x5e, 0x41, 0x28,
+	0x0b, 0x53, 0xd6, 0xd5, 0x41, 0x21, 0x23, 0x49, 0x90, 0x86, 0xd9, 0x49, 0xe0, 0xaf, 0x10, 0x59,
+	0xc3, 0x73, 0xa3, 0xa4, 0xd1, 0xbf, 0x99, 0x2e, 0x60, 0xe6, 0x01, 0x8e, 0xd3, 0xae, 0x77, 0xaa,
+	0xfd, 0x17, 0x0b, 0x7a, 0xd7, 0x49, 0xe0, 0x2f, 0x70, 0xe9, 0xe0, 0xa7, 0x54, 0x0c, 0x16, 0x1f,
+	0x1a, 0x51, 0xbe, 0x69, 0x7b, 0xd5, 0xf8, 0x4b, 0xaf, 0x61, 0x3e, 0xf8, 0xd9, 0x2c, 0x21, 0xe9,
+	0xd9, 0x6e, 0x29, 0x5c, 0x82, 0x9d, 0xf2, 0x3b, 0x88, 0x9f, 0xba, 0x1c, 0x8b, 0xb6, 0xcc, 0xa7,
+	0x42, 0x38, 0x9c, 0xe3, 0xa8, 0xb5, 0x87, 0x71, 0x0b, 0x47, 0xdb, 0x7d, 0x13, 0x58, 0xd8, 0x62,
+	0xe9, 0x16, 0xe0, 0x51, 0x1b, 0xcb, 0xa7, 0x2b, 0xe1, 0xf6, 0xbb, 0x89, 0x85, 0x5f, 0xe6, 0x3d,
+	0x44, 0x43, 0x8c, 0xd1, 0xe3, 0xa5, 0xdb, 0xac, 0xc5, 0xdf, 0xfb, 0x3e, 0xc0, 0xda, 0x31, 0x4e,
+	0xd1, 0xe9, 0x85, 0xf0, 0xd7, 0xf8, 0x0f, 0x72, 0x43, 0xf2, 0x79, 0xff, 0x14, 0x6e, 0x7f, 0x02,
+	0x00, 0x00, 0xff, 0xff, 0x5b, 0xf8, 0x49, 0x81, 0x1b, 0x02, 0x00, 0x00,
 }

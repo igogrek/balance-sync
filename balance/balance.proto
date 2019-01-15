@@ -8,17 +8,17 @@ service balance {
 
 
 message BalanceRequest {
-	string email = 1;
+	string did = 1;
 }
 
 message BalanceResponse {
-	int32 balance = 1;
+	repeated string actionIds = 1;
 }
 
 
 message BalanceUpdate {
-	string email = 1;
-	int32 balance = 2;
+	string did = 1;
+	repeated string actionIds = 2;
 	string updatedBy = 3;
 }
 
