@@ -1,0 +1,20 @@
+Points:
+  registration: 100
+
+  checkin-first: 100
+  checkin-social-vr: 10
+  checkin-space: 10
+  checkin-factory: 10
+  checkin-vehicle: 10
+  checkin-all-skt: 100
+  checkin-all-dt: 100
+
+  share-facebook-social-vr: 10
+
+  share-info-email: 100
+  share-info-first-name: 100
+  share-info-last-name: 100
+  share-info-job-title: 100
+  share-info-organisation: 100
+
+  share-activity: 100

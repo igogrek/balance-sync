@@ -12,13 +12,14 @@ message BalanceRequest {
 }
 
 message BalanceResponse {
-	repeated string actionIds = 1;
+	int32 balance = 1;
+	repeated Action actions = 2;
 }
 
 
 message BalanceUpdate {
 	string did = 1;
-	repeated string actionIds = 2;
+	repeated Action actions = 2;
 	string updatedBy = 3;
 }
 
@@ -32,3 +33,7 @@ message SubscribeRequest {
 	string subscriberId = 1;
 }
 
+message Action {
+	string id = 1;
+	string timestamp = 2;
+}

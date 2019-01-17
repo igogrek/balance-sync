@@ -4,6 +4,7 @@ import (
 	"balance-sync/balance"
 	"context"
 	"crypto/tls"
+	"flag"
 	"github.com/nu7hatch/gouuid"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
@@ -12,11 +13,20 @@ import (
 )
 
 func main() {
-	creds := credentials.NewTLS(&tls.Config{})
-	conn, err := grpc.Dial("balance.mwc.telekom.net:443", grpc.WithTransportCredentials(creds))
-	if err != nil {
-		log.Fatalf("failed to connect: %s", err)
+	// Flag to switch to local server connection
+	boolPtr := flag.Bool("local", false, "Use local connection")
+	flag.Parse()
+
+	var conn *grpc.ClientConn
+	if *boolPtr {
+		log.Println("Using local server")
+		conn, _ = grpc.Dial("localhost:50051", grpc.WithInsecure())
+	} else {
+		log.Println("Using telekom server")
+		creds := credentials.NewTLS(&tls.Config{})
+		conn, _ = grpc.Dial("balance.mwc.telekom.net:443", grpc.WithTransportCredentials(creds))
 	}
+
 	client := balance.NewBalanceClient(conn)
 
 	// Get balance
@@ -26,7 +36,7 @@ func main() {
 	if err != nil {
 		log.Printf("failed to get balance: %s", err)
 	} else {
-		log.Printf("Current user balance (%v): %v", len(resp.ActionIds), resp.ActionIds)
+		log.Printf("Current user balance (%v): %v", resp.Balance, resp.Actions)
 	}
 
 	// Subscribe for updates
@@ -54,7 +64,7 @@ func main() {
 
 			log.Printf("Message from stream: %v", in.Message)
 			if in.Update != nil {
-				log.Printf("Got update from %s :(%v, %v)", in.Update.UpdatedBy, in.Update.Did, in.Update.ActionIds)
+				log.Printf("Got update from %s :(%v, %v)", in.Update.UpdatedBy, in.Update.Did, in.Update.Actions)
 			}
 
 		}
@@ -62,7 +72,11 @@ func main() {
 
 	// Send update
 	_, err = client.UpdateBalance(context.Background(), &balance.BalanceUpdate{
-		ActionIds: []string{"get-flyer-1", "get-flyer-77", "share-facebook-3"},
+		Actions: []*balance.Action{
+			{Id: "registration", Timestamp: "2019-01-01"},
+			{Id: "checkin-first", Timestamp: "2019-01-02"},
+			{Id: "share-facebook-social-vr", Timestamp: "2019-01-03"},
+		},
 		Did:       "did:sov:2wJPyULfLLnYTEFYzByfUR",
 		UpdatedBy: newId.String(),
 	})
