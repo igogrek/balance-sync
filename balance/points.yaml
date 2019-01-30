@@ -1,20 +1,24 @@
 Points:
-  registration: 100
-
-  checkin-first: 100
-  checkin-social-vr: 10
-  checkin-space: 10
-  checkin-factory: 10
-  checkin-vehicle: 10
+  checkin-first-skt: 100
+  checkin-social-blockchain-skt: 10
+  checkin-social-vr-skt: 10
+  checkin-space-skt: 10
+  checkin-factory-skt: 10
+  checkin-vehicle-skt: 10
   checkin-all-skt: 100
+
+  checkin-first-dt: 100
   checkin-all-dt: 100
 
-  share-facebook-social-vr: 10
+  share-facebook-social-blockchain-skt: 10
+  share-facebook-social-vr-skt: 10
+  share-facebook-space-skt: 10
+  share-facebook-factory-skt: 10
+  share-facebook-vehicle-skt: 10
+  share-twitter-social-blockchain-skt: 10
+  share-twitter-social-vr-skt: 10
+  share-twitter-space-skt: 10
+  share-twitter-factory-skt: 10
+  share-twitter-vehicle-skt: 10
 
-  share-info-email: 100
-  share-info-first-name: 100
-  share-info-last-name: 100
-  share-info-job-title: 100
-  share-info-organisation: 100
-
-  share-activity: 100
+  share-activity-skt: 100
