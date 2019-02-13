@@ -38,17 +38,8 @@ func main() {
 	if err != nil {
 		log.Printf("failed to get balance: %s", err)
 	} else {
-		log.Printf("Current user balance (%v): %v", balanceRes.Balance, balanceRes.Actions)
-	}
-
-	// Get milestones
-	milestones, err := client.GetMilestones(context.Background(), &balance.BalanceRequest{
-		Did: DID,
-	})
-	if err != nil {
-		log.Printf("failed to get milestones: %s", err)
-	} else {
-		log.Printf("Milestones: %v", milestones)
+		log.Printf("Current user balance, actions, milestones, prize claimed:  %v / %v / %v / %v",
+			balanceRes.Balance, balanceRes.Actions, balanceRes.Milestones, balanceRes.PrizeClaimed)
 	}
 
 	// Claim prize

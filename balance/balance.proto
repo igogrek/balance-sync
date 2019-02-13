@@ -5,7 +5,6 @@ service balance {
 	rpc UpdateBalance (BalanceUpdate) returns (BalanceUpdateResponse);
 	rpc UpdateBalanceSubscribe (SubscribeRequest) returns (stream BalanceUpdateResponse);
 
-	rpc GetMilestones (BalanceRequest) returns (MilestoneResponse);
 	rpc ClaimPrize (BalanceRequest) returns (ClaimPrizeResponse);
 }
 
@@ -17,6 +16,8 @@ message BalanceRequest {
 message BalanceResponse {
 	int32 balance = 1;
 	repeated Action actions = 2;
+	repeated string milestones = 3;
+	bool prizeClaimed = 4;
 }
 
 
@@ -39,10 +40,6 @@ message SubscribeRequest {
 message Action {
 	string id = 1;
 	string timestamp = 2;
-}
-
-message MilestoneResponse {
-	repeated string milestones = 1;
 }
 
 message ClaimPrizeResponse {
