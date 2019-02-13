@@ -34,7 +34,7 @@ func (m *BalanceRequest) Reset()         { *m = BalanceRequest{} }
 func (m *BalanceRequest) String() string { return proto.CompactTextString(m) }
 func (*BalanceRequest) ProtoMessage()    {}
 func (*BalanceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_balance_60f00aee5f5346bb, []int{0}
+	return fileDescriptor_balance_3d5da835e355dd94, []int{0}
 }
 func (m *BalanceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BalanceRequest.Unmarshal(m, b)
@@ -73,7 +73,7 @@ func (m *BalanceResponse) Reset()         { *m = BalanceResponse{} }
 func (m *BalanceResponse) String() string { return proto.CompactTextString(m) }
 func (*BalanceResponse) ProtoMessage()    {}
 func (*BalanceResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_balance_60f00aee5f5346bb, []int{1}
+	return fileDescriptor_balance_3d5da835e355dd94, []int{1}
 }
 func (m *BalanceResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BalanceResponse.Unmarshal(m, b)
@@ -120,7 +120,7 @@ func (m *BalanceUpdate) Reset()         { *m = BalanceUpdate{} }
 func (m *BalanceUpdate) String() string { return proto.CompactTextString(m) }
 func (*BalanceUpdate) ProtoMessage()    {}
 func (*BalanceUpdate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_balance_60f00aee5f5346bb, []int{2}
+	return fileDescriptor_balance_3d5da835e355dd94, []int{2}
 }
 func (m *BalanceUpdate) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BalanceUpdate.Unmarshal(m, b)
@@ -173,7 +173,7 @@ func (m *BalanceUpdateResponse) Reset()         { *m = BalanceUpdateResponse{} }
 func (m *BalanceUpdateResponse) String() string { return proto.CompactTextString(m) }
 func (*BalanceUpdateResponse) ProtoMessage()    {}
 func (*BalanceUpdateResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_balance_60f00aee5f5346bb, []int{3}
+	return fileDescriptor_balance_3d5da835e355dd94, []int{3}
 }
 func (m *BalanceUpdateResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BalanceUpdateResponse.Unmarshal(m, b)
@@ -218,7 +218,7 @@ func (m *SubscribeRequest) Reset()         { *m = SubscribeRequest{} }
 func (m *SubscribeRequest) String() string { return proto.CompactTextString(m) }
 func (*SubscribeRequest) ProtoMessage()    {}
 func (*SubscribeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_balance_60f00aee5f5346bb, []int{4}
+	return fileDescriptor_balance_3d5da835e355dd94, []int{4}
 }
 func (m *SubscribeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SubscribeRequest.Unmarshal(m, b)
@@ -257,7 +257,7 @@ func (m *Action) Reset()         { *m = Action{} }
 func (m *Action) String() string { return proto.CompactTextString(m) }
 func (*Action) ProtoMessage()    {}
 func (*Action) Descriptor() ([]byte, []int) {
-	return fileDescriptor_balance_60f00aee5f5346bb, []int{5}
+	return fileDescriptor_balance_3d5da835e355dd94, []int{5}
 }
 func (m *Action) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Action.Unmarshal(m, b)
@@ -291,6 +291,82 @@ func (m *Action) GetTimestamp() string {
 	return ""
 }
 
+type MilestoneResponse struct {
+	Milestones           []string `protobuf:"bytes,1,rep,name=milestones,proto3" json:"milestones,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *MilestoneResponse) Reset()         { *m = MilestoneResponse{} }
+func (m *MilestoneResponse) String() string { return proto.CompactTextString(m) }
+func (*MilestoneResponse) ProtoMessage()    {}
+func (*MilestoneResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_balance_3d5da835e355dd94, []int{6}
+}
+func (m *MilestoneResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MilestoneResponse.Unmarshal(m, b)
+}
+func (m *MilestoneResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MilestoneResponse.Marshal(b, m, deterministic)
+}
+func (dst *MilestoneResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MilestoneResponse.Merge(dst, src)
+}
+func (m *MilestoneResponse) XXX_Size() int {
+	return xxx_messageInfo_MilestoneResponse.Size(m)
+}
+func (m *MilestoneResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MilestoneResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MilestoneResponse proto.InternalMessageInfo
+
+func (m *MilestoneResponse) GetMilestones() []string {
+	if m != nil {
+		return m.Milestones
+	}
+	return nil
+}
+
+type ClaimPrizeResponse struct {
+	Success              bool     `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ClaimPrizeResponse) Reset()         { *m = ClaimPrizeResponse{} }
+func (m *ClaimPrizeResponse) String() string { return proto.CompactTextString(m) }
+func (*ClaimPrizeResponse) ProtoMessage()    {}
+func (*ClaimPrizeResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_balance_3d5da835e355dd94, []int{7}
+}
+func (m *ClaimPrizeResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ClaimPrizeResponse.Unmarshal(m, b)
+}
+func (m *ClaimPrizeResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ClaimPrizeResponse.Marshal(b, m, deterministic)
+}
+func (dst *ClaimPrizeResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ClaimPrizeResponse.Merge(dst, src)
+}
+func (m *ClaimPrizeResponse) XXX_Size() int {
+	return xxx_messageInfo_ClaimPrizeResponse.Size(m)
+}
+func (m *ClaimPrizeResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ClaimPrizeResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ClaimPrizeResponse proto.InternalMessageInfo
+
+func (m *ClaimPrizeResponse) GetSuccess() bool {
+	if m != nil {
+		return m.Success
+	}
+	return false
+}
+
 func init() {
 	proto.RegisterType((*BalanceRequest)(nil), "BalanceRequest")
 	proto.RegisterType((*BalanceResponse)(nil), "BalanceResponse")
@@ -298,6 +374,8 @@ func init() {
 	proto.RegisterType((*BalanceUpdateResponse)(nil), "BalanceUpdateResponse")
 	proto.RegisterType((*SubscribeRequest)(nil), "SubscribeRequest")
 	proto.RegisterType((*Action)(nil), "Action")
+	proto.RegisterType((*MilestoneResponse)(nil), "MilestoneResponse")
+	proto.RegisterType((*ClaimPrizeResponse)(nil), "ClaimPrizeResponse")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -315,6 +393,8 @@ type BalanceClient interface {
 	GetBalance(ctx context.Context, in *BalanceRequest, opts ...grpc.CallOption) (*BalanceResponse, error)
 	UpdateBalance(ctx context.Context, in *BalanceUpdate, opts ...grpc.CallOption) (*BalanceUpdateResponse, error)
 	UpdateBalanceSubscribe(ctx context.Context, in *SubscribeRequest, opts ...grpc.CallOption) (Balance_UpdateBalanceSubscribeClient, error)
+	GetMilestones(ctx context.Context, in *BalanceRequest, opts ...grpc.CallOption) (*MilestoneResponse, error)
+	ClaimPrize(ctx context.Context, in *BalanceRequest, opts ...grpc.CallOption) (*ClaimPrizeResponse, error)
 }
 
 type balanceClient struct {
@@ -375,11 +455,31 @@ func (x *balanceUpdateBalanceSubscribeClient) Recv() (*BalanceUpdateResponse, er
 	return m, nil
 }
 
+func (c *balanceClient) GetMilestones(ctx context.Context, in *BalanceRequest, opts ...grpc.CallOption) (*MilestoneResponse, error) {
+	out := new(MilestoneResponse)
+	err := c.cc.Invoke(ctx, "/balance/GetMilestones", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *balanceClient) ClaimPrize(ctx context.Context, in *BalanceRequest, opts ...grpc.CallOption) (*ClaimPrizeResponse, error) {
+	out := new(ClaimPrizeResponse)
+	err := c.cc.Invoke(ctx, "/balance/ClaimPrize", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BalanceServer is the server API for Balance service.
 type BalanceServer interface {
 	GetBalance(context.Context, *BalanceRequest) (*BalanceResponse, error)
 	UpdateBalance(context.Context, *BalanceUpdate) (*BalanceUpdateResponse, error)
 	UpdateBalanceSubscribe(*SubscribeRequest, Balance_UpdateBalanceSubscribeServer) error
+	GetMilestones(context.Context, *BalanceRequest) (*MilestoneResponse, error)
+	ClaimPrize(context.Context, *BalanceRequest) (*ClaimPrizeResponse, error)
 }
 
 func RegisterBalanceServer(s *grpc.Server, srv BalanceServer) {
@@ -443,6 +543,42 @@ func (x *balanceUpdateBalanceSubscribeServer) Send(m *BalanceUpdateResponse) err
 	return x.ServerStream.SendMsg(m)
 }
 
+func _Balance_GetMilestones_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BalanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BalanceServer).GetMilestones(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/balance/GetMilestones",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BalanceServer).GetMilestones(ctx, req.(*BalanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Balance_ClaimPrize_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BalanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BalanceServer).ClaimPrize(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/balance/ClaimPrize",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BalanceServer).ClaimPrize(ctx, req.(*BalanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Balance_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "balance",
 	HandlerType: (*BalanceServer)(nil),
@@ -455,6 +591,14 @@ var _Balance_serviceDesc = grpc.ServiceDesc{
 			MethodName: "UpdateBalance",
 			Handler:    _Balance_UpdateBalance_Handler,
 		},
+		{
+			MethodName: "GetMilestones",
+			Handler:    _Balance_GetMilestones_Handler,
+		},
+		{
+			MethodName: "ClaimPrize",
+			Handler:    _Balance_ClaimPrize_Handler,
+		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
@@ -466,27 +610,32 @@ var _Balance_serviceDesc = grpc.ServiceDesc{
 	Metadata: "balance.proto",
 }
 
-func init() { proto.RegisterFile("balance.proto", fileDescriptor_balance_60f00aee5f5346bb) }
+func init() { proto.RegisterFile("balance.proto", fileDescriptor_balance_3d5da835e355dd94) }
 
-var fileDescriptor_balance_60f00aee5f5346bb = []byte{
-	// 303 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x52, 0x4d, 0x4f, 0x84, 0x30,
-	0x10, 0x0d, 0x6c, 0x84, 0x30, 0x2b, 0x2c, 0x36, 0x71, 0x43, 0x36, 0x1e, 0xb0, 0x07, 0xc3, 0xa9,
-	0x1a, 0x4c, 0xd6, 0xb3, 0x9b, 0x18, 0xe3, 0xc5, 0x03, 0xc6, 0x83, 0xc7, 0x02, 0x8d, 0x21, 0x91,
-	0x0f, 0x69, 0x39, 0xf8, 0xd7, 0xfc, 0x75, 0x66, 0x0b, 0xed, 0x5a, 0xd4, 0xc4, 0x1b, 0xf3, 0x98,
-	0xf7, 0xde, 0xbc, 0x99, 0x82, 0x9f, 0xd3, 0x37, 0xda, 0x14, 0x8c, 0x74, 0x7d, 0x2b, 0x5a, 0x8c,
-	0x21, 0xd8, 0x8d, 0x40, 0xc6, 0xde, 0x07, 0xc6, 0x05, 0x0a, 0x61, 0x51, 0x56, 0x65, 0x64, 0xc5,
-	0x56, 0xe2, 0x65, 0xfb, 0x4f, 0xfc, 0x08, 0x2b, 0xdd, 0xc3, 0xbb, 0xb6, 0xe1, 0x0c, 0x45, 0xe0,
-	0x4e, 0x3a, 0xb2, 0xf1, 0x28, 0x53, 0x25, 0x3a, 0x07, 0x97, 0x16, 0xa2, 0x6a, 0x1b, 0x1e, 0xd9,
-	0xf1, 0x22, 0x59, 0xa6, 0x2e, 0xb9, 0x95, 0x75, 0xa6, 0x70, 0x9c, 0x83, 0x3f, 0xe9, 0x3d, 0x77,
-	0x25, 0x15, 0xec, 0xa7, 0xe5, 0x3f, 0x54, 0xd0, 0x19, 0x78, 0x83, 0xa4, 0x97, 0xbb, 0x8f, 0x68,
-	0x21, 0xa9, 0x07, 0x00, 0xbf, 0xc0, 0xa9, 0xe1, 0xf1, 0x7d, 0xf2, 0x9a, 0x71, 0x4e, 0x5f, 0xd9,
-	0xe4, 0xa7, 0x4a, 0x74, 0x01, 0xce, 0xc8, 0x8f, 0xec, 0xd8, 0x4a, 0x96, 0x69, 0x40, 0x4c, 0x85,
-	0xe9, 0x2f, 0xde, 0x42, 0xf8, 0x34, 0xe4, 0xbc, 0xe8, 0xab, 0x5c, 0x2f, 0x0d, 0xc3, 0x31, 0x57,
-	0x58, 0xff, 0xa0, 0xa2, 0x18, 0x18, 0xde, 0x82, 0x33, 0x66, 0x40, 0x01, 0xd8, 0x3a, 0xae, 0x5d,
-	0x95, 0xfb, 0x28, 0xa2, 0xaa, 0x19, 0x17, 0xb4, 0xee, 0xa4, 0xb9, 0x97, 0x1d, 0x80, 0xf4, 0xd3,
-	0xd2, 0xcb, 0x46, 0x97, 0x00, 0xf7, 0x4c, 0x4c, 0x73, 0xa1, 0x15, 0x31, 0x6f, 0xb7, 0x09, 0xc9,
-	0xfc, 0x50, 0x37, 0xe0, 0x8f, 0xe3, 0x2b, 0xce, 0x2c, 0xd5, 0x66, 0x4d, 0x7e, 0xdf, 0xd3, 0x1d,
-	0xac, 0x0d, 0xa2, 0x8e, 0x8c, 0x4e, 0xc8, 0x3c, 0xfe, 0x5f, 0x22, 0x57, 0x56, 0xee, 0xc8, 0x67,
-	0x76, 0xfd, 0x15, 0x00, 0x00, 0xff, 0xff, 0xad, 0xc0, 0x9c, 0x5b, 0x77, 0x02, 0x00, 0x00,
+var fileDescriptor_balance_3d5da835e355dd94 = []byte{
+	// 378 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x53, 0x4b, 0x6b, 0xdb, 0x40,
+	0x18, 0x44, 0x12, 0xb5, 0xab, 0xcf, 0x95, 0x1f, 0x5b, 0x6a, 0x84, 0x29, 0x45, 0xdd, 0x43, 0xd1,
+	0x69, 0x5b, 0xe4, 0xe2, 0x9c, 0xe3, 0x10, 0x4c, 0x0e, 0x09, 0x41, 0x21, 0x87, 0x1c, 0xf5, 0x58,
+	0xc2, 0x82, 0xf5, 0x88, 0xbe, 0xd5, 0x21, 0xf9, 0x3d, 0xf9, 0xa1, 0xc1, 0x92, 0x56, 0xb2, 0xac,
+	0x04, 0x72, 0xd3, 0x37, 0xda, 0x99, 0xd9, 0x99, 0xdd, 0x05, 0x2b, 0x0c, 0xf6, 0x41, 0x1a, 0x71,
+	0x96, 0x17, 0x99, 0xcc, 0x28, 0x85, 0xe9, 0xb6, 0x06, 0x7c, 0xfe, 0x54, 0x72, 0x94, 0x64, 0x0e,
+	0x46, 0x2c, 0x62, 0x5b, 0x73, 0x34, 0xd7, 0xf4, 0x0f, 0x9f, 0xf4, 0x06, 0x66, 0xed, 0x1a, 0xcc,
+	0xb3, 0x14, 0x39, 0xb1, 0x61, 0xdc, 0xe8, 0x54, 0x0b, 0xbf, 0xf8, 0x6a, 0x24, 0xbf, 0x61, 0x1c,
+	0x44, 0x52, 0x64, 0x29, 0xda, 0xba, 0x63, 0xb8, 0x13, 0x6f, 0xcc, 0xce, 0xab, 0xd9, 0x57, 0x38,
+	0x0d, 0xc1, 0x6a, 0xf4, 0xee, 0xf3, 0x38, 0x90, 0x7c, 0x68, 0xf9, 0x09, 0x15, 0xf2, 0x13, 0xcc,
+	0xb2, 0xa2, 0xc7, 0xdb, 0x67, 0xdb, 0xa8, 0xa8, 0x1d, 0x40, 0x1f, 0xe0, 0x47, 0xcf, 0xe3, 0x78,
+	0xe7, 0x09, 0x47, 0x0c, 0x1e, 0x79, 0xe3, 0xa7, 0x46, 0xf2, 0x07, 0x46, 0x35, 0xdf, 0xd6, 0x1d,
+	0xcd, 0x9d, 0x78, 0x53, 0xd6, 0x57, 0x68, 0xfe, 0xd2, 0x0d, 0xcc, 0xef, 0xca, 0x10, 0xa3, 0x42,
+	0x84, 0x6d, 0x69, 0x14, 0xbe, 0xa1, 0xc2, 0x8a, 0x2b, 0x15, 0xa5, 0x87, 0xd1, 0x0d, 0x8c, 0xea,
+	0x0c, 0x64, 0x0a, 0x7a, 0x1b, 0x57, 0x17, 0xf1, 0x21, 0x8a, 0x14, 0x09, 0x47, 0x19, 0x24, 0x79,
+	0x65, 0x6e, 0xfa, 0x1d, 0x40, 0xd7, 0xb0, 0xb8, 0x16, 0x7b, 0x8e, 0x32, 0x4b, 0xbb, 0x18, 0xbf,
+	0x00, 0x12, 0x05, 0xa2, 0xad, 0x39, 0x86, 0x6b, 0xfa, 0x47, 0x08, 0x65, 0x40, 0x2e, 0xf6, 0x81,
+	0x48, 0x6e, 0x0b, 0xf1, 0xd2, 0x0b, 0x8f, 0x65, 0x14, 0x71, 0xc4, 0xca, 0xfd, 0xab, 0xaf, 0x46,
+	0xef, 0x55, 0x6f, 0x4f, 0x94, 0xfc, 0x05, 0xd8, 0x71, 0xd9, 0x84, 0x27, 0x33, 0xd6, 0xbf, 0x20,
+	0xab, 0x39, 0x3b, 0xbd, 0x0d, 0x67, 0x60, 0xd5, 0x1d, 0x29, 0xce, 0x49, 0x75, 0xab, 0x25, 0x7b,
+	0xff, 0x30, 0x2e, 0x61, 0xd9, 0x23, 0xb6, 0xbd, 0x92, 0x05, 0x3b, 0xed, 0xf8, 0x23, 0x91, 0x7f,
+	0x1a, 0xf9, 0x0f, 0xd6, 0x8e, 0xcb, 0xb6, 0x24, 0x1c, 0xee, 0x99, 0xb0, 0x61, 0x85, 0x1e, 0x40,
+	0x57, 0xd1, 0x90, 0xf2, 0x9d, 0x0d, 0x0b, 0x0c, 0x47, 0xd5, 0xab, 0x59, 0xbf, 0x05, 0x00, 0x00,
+	0xff, 0xff, 0xe0, 0xc9, 0x4d, 0x0a, 0x46, 0x03, 0x00, 0x00,
 }

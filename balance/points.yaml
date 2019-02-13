@@ -1,24 +1,96 @@
 Points:
-  checkin-first-skt: 100
-  checkin-social-blockchain-skt: 10
-  checkin-social-vr-skt: 10
-  checkin-space-skt: 10
-  checkin-factory-skt: 10
-  checkin-vehicle-skt: 10
-  checkin-all-skt: 100
-
-  checkin-first-dt: 100
-  checkin-all-dt: 100
-
-  share-facebook-social-blockchain-skt: 10
-  share-facebook-social-vr-skt: 10
-  share-facebook-space-skt: 10
-  share-facebook-factory-skt: 10
-  share-facebook-vehicle-skt: 10
-  share-twitter-social-blockchain-skt: 10
-  share-twitter-social-vr-skt: 10
-  share-twitter-space-skt: 10
-  share-twitter-factory-skt: 10
-  share-twitter-vehicle-skt: 10
-
-  share-activity-skt: 100
+  - registration: 100
+  - checkin-first-skt: 90
+  - checkin-all-skt: 100
+  - checkin-social-blockchain-skt: 10
+  - checkin-social-vr-skt: 10
+  - checkin-space-skt: 10
+  - checkin-factory-skt: 10
+  - checkin-vehicle-skt: 10
+  - share-facebook-social-blockchain-skt: 10
+  - share-facebook-social-vr-skt: 10
+  - share-facebook-space-skt: 10
+  - share-facebook-factory-skt: 10
+  - share-facebook-vehicle-skt: 10
+  - share-twitter-social-blockchain-skt: 10
+  - share-twitter-social-vr-skt: 10
+  - share-twitter-space-skt: 10
+  - share-twitter-factory-skt: 10
+  - share-twitter-vehicle-skt: 10
+  - share-linkedin-social-blockchain-skt: 10
+  - share-linkedin-social-vr-skt: 10
+  - share-linkedin-space-skt: 10
+  - share-linkedin-factory-skt: 10
+  - share-linkedin-vehicle-skt: 10
+  - claim-name-email-skt: 100
+  - claim-nationality-skt: 10
+  - claim-company-skt: 10
+  - claim-phone-number-skt: 10
+  - checkin-first-dt: 90
+  - checkin-all-dt: 100
+  - checkin-voice-enabled-services-dt: 10
+  - checkin-virtual-fiber-dt: 10
+  - checkin-multi-gamer_ar-dt: 10
+  - checkin-5g-social-vr-dt: 10
+  - checkin-blockchain-based_identity-dt: 10
+  - checkin-ai-driven_enterprise-dt: 10
+  - checkin-campus_4_0-dt: 10
+  - checkin-data-intelligence-hub-dt: 10
+  - checkin-iot-smart-logistics-dt: 10
+  - checkin-iot-solution-optimizer-dt: 10
+  - checkin-5g-for-automotive-dt: 10
+  - checkin-smart-city-app-dt: 10
+  - checkin-city-tree-dt: 10
+  - checkin-smart-buildings-dt: 10
+  - share-facebook-voice-enabled-services-dt: 10
+  - share-facebook-virtual-fiber-dt: 10
+  - share-facebook-multi-gamer_ar-dt: 10
+  - share-facebook-5g-social-vr-dt: 10
+  - share-facebook-blockchain-based_identity-dt: 10
+  - share-facebook-ai-driven_enterprise-dt: 10
+  - share-facebook-campus_4_0-dt: 10
+  - share-facebook-data-intelligence-hub-dt: 10
+  - share-facebook-iot-smart-logistics-dt: 10
+  - share-facebook-iot-solution-optimizer-dt: 10
+  - share-facebook-5g-for-automotive-dt: 10
+  - share-facebook-smart-city-app-dt: 10
+  - share-facebook-city-tree-dt: 10
+  - share-facebook-smart-buildings-dt: 10
+  - share-twitter-voice-enabled-services-dt: 10
+  - share-twitter-virtual-fiber-dt: 10
+  - share-twitter-multi-gamer_ar-dt: 10
+  - share-twitter-5g-social-vr-dt: 10
+  - share-twitter-blockchain-based_identity-dt: 10
+  - share-twitter-ai-driven_enterprise-dt: 10
+  - share-twitter-campus_4_0-dt: 10
+  - share-twitter-data-intelligence-hub-dt: 10
+  - share-twitter-iot-smart-logistics-dt: 10
+  - share-twitter-iot-solution-optimizer-dt: 10
+  - share-twitter-5g-for-automotive-dt: 10
+  - share-twitter-smart-city-app-dt: 10
+  - share-twitter-city-tree-dt: 10
+  - share-twitter-smart-buildings-dt: 10
+  - share-linkedin-voice-enabled-services-dt: 10
+  - share-linkedin-virtual-fiber-dt: 10
+  - share-linkedin-multi-gamer_ar-dt: 10
+  - share-linkedin-5g-social-vr-dt: 10
+  - share-linkedin-blockchain-based_identity-dt: 10
+  - share-linkedin-ai-driven_enterprise-dt: 10
+  - share-linkedin-campus_4_0-dt: 10
+  - share-linkedin-data-intelligence-hub-dt: 10
+  - share-linkedin-iot-smart-logistics-dt: 10
+  - share-linkedin-iot-solution-optimizer-dt: 10
+  - share-linkedin-5g-for-automotive-dt: 10
+  - share-linkedin-smart-city-app-dt: 10
+  - share-linkedin-city-tree-dt: 10
+  - share-linkedin-smart-buildings-dt: 10
+  - claim-email-dt: 80
+  - claim-first-name-dt: 10
+  - claim-last-name-dt: 10
+  - claim-company-dt: 10
+  - claim-job-title-dt: 10
+Milestones:
+  - registration
+  - checkin-first-skt
+  - checkin-first-dt
+  - claim-

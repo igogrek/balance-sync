@@ -12,6 +12,8 @@ import (
 	"log"
 )
 
+const DID = "did:sov:2wJPyULfLLnYTEFYzByfUR"
+
 func main() {
 	// Flag to switch to local server connection
 	boolPtr := flag.Bool("local", false, "Use local connection")
@@ -30,13 +32,33 @@ func main() {
 	client := balance.NewBalanceClient(conn)
 
 	// Get balance
-	resp, err := client.GetBalance(context.Background(), &balance.BalanceRequest{
-		Did: "did:sov:2wJPyULfLLnYTEFYzByfUR",
+	balanceRes, err := client.GetBalance(context.Background(), &balance.BalanceRequest{
+		Did: DID,
 	})
 	if err != nil {
 		log.Printf("failed to get balance: %s", err)
 	} else {
-		log.Printf("Current user balance (%v): %v", resp.Balance, resp.Actions)
+		log.Printf("Current user balance (%v): %v", balanceRes.Balance, balanceRes.Actions)
+	}
+
+	// Get milestones
+	milestones, err := client.GetMilestones(context.Background(), &balance.BalanceRequest{
+		Did: DID,
+	})
+	if err != nil {
+		log.Printf("failed to get milestones: %s", err)
+	} else {
+		log.Printf("Milestones: %v", milestones)
+	}
+
+	// Claim prize
+	claimRes, err := client.ClaimPrize(context.Background(), &balance.BalanceRequest{
+		Did: DID,
+	})
+	if err != nil {
+		log.Printf("failed to claim prize: %s", err)
+	} else {
+		log.Printf("Claim success: %v", claimRes.Success)
 	}
 
 	// Subscribe for updates
@@ -74,10 +96,11 @@ func main() {
 	_, err = client.UpdateBalance(context.Background(), &balance.BalanceUpdate{
 		Actions: []*balance.Action{
 			{Id: "registration", Timestamp: "2019-01-01"},
-			{Id: "checkin-first", Timestamp: "2019-01-02"},
-			{Id: "share-facebook-social-vr", Timestamp: "2019-01-03"},
+			{Id: "checkin-first-skt", Timestamp: "2019-01-02"},
+			{Id: "checkin-first-dt", Timestamp: "2019-01-02"},
+			{Id: "claim-email-dt", Timestamp: "2019-01-03"},
 		},
-		Did:       "did:sov:2wJPyULfLLnYTEFYzByfUR",
+		Did:       DID,
 		UpdatedBy: newId.String(),
 	})
 	if err != nil {
