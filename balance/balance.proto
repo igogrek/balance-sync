@@ -40,6 +40,7 @@ message SubscribeRequest {
 message Action {
 	string id = 1;
 	string timestamp = 2;
+	int32 value = 3;
 }
 
 message ClaimPrizeResponse {
