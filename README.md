@@ -1,5 +1,6 @@
 # balance-sync
 
+Simple gRPC client for balance sync service
 
 Run with
 
